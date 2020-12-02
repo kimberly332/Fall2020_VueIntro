@@ -1,20 +1,7 @@
 import { fetchData } from "./components/TheDataMiner.js";
+import ProfCard from "./components/TheProfCard.js";
 
 (() => {
-    Vue.component("prof-card", {
-        props: ["prof"],
-        template: `<li>
-                        <img :src="'images/' +  prof.avatar" alt="prof image">
-                        <p>Prof Name: {{ prof.name }}</p>
-
-                        <a href="" class="remove-prof">Show {{ prof.name }}'s info</a>
-                        <a href="" class="remove-prof">Remove {{ prof.name }}</a>
-                    </li>`,
-        
-        created: function() {
-            console.log(`created ${this.prof.name}'s card`);
-        }
-    });
 
     let vue_vm = new Vue({
         // link Vue to an element in our HTML
@@ -62,6 +49,8 @@ import { fetchData } from "./components/TheDataMiner.js";
             },
 
             showProfData(target) {
+                debugger;
+                
                 // remove this prof from the prods array
                 console.log("clicked to view prof bio data", target, target.name);
                 // the "this" keyword inside a vue instance REFERS to the Vue instance itself by default
@@ -82,6 +71,10 @@ import { fetchData } from "./components/TheDataMiner.js";
                 // this.profs.splice(this.profs.indexOf(target), 1);
                 this.$delete(this.profs, target);
             }
+        },
+
+        components: {
+            "prof-card": ProfCard
         }
     }).$mount("#app"); // also connects Vue to your wrapper in HTML
 })();

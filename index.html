@@ -17,7 +17,7 @@
         <!-- show the prof data in collection -->
         <ul>
             <!-- this is a custom Vue component defined in main.js -->
-            <prof-card v-for="prof in profs" :prof="prof" :key="prof.id"></prof-card>
+            <prof-card @showmydata="showProfData" v-for="prof in profs" :prof="prof" :key="prof.id"></prof-card>
 
             <!-- <li v-for="prof, index in profs">
                 <p v-on:click="logClicked">Prof Name: {{prof.name}}, Role: {{prof.role}}</p>
